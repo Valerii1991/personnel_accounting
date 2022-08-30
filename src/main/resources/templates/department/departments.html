@@ -1,0 +1,43 @@
+
+<!Doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css"  th:href="@{styles_tables.css}">
+    <link rel="stylesheet" type="text/css"  th:href="@{styles_index.css}">
+</head>
+<html>
+<body>
+<nav>
+    <ul>
+        <li> <a href="departments"> Departments</a> </li>
+        <li> <a href="employees"> Employees</a> </li>
+        <li> <a href="reports"> Reports</a> </li>
+    </ul>
+</nav>
+<br>
+<h2>ALL DEPARTMENTS</h2>
+<br>
+<div>
+    <input type="button" value="Add new department" onclick="window.location.href = 'addNewDepartment'">
+</div>
+<br>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="department : ${allDepartments}">
+        <td th:text="${department.name}"></td>
+
+        <td><a th:href="@{/department/{id}/edit(id=${department.id})}">edit</a></td>
+        <td><a th:href="@{/deleteDepartment/{id}(id=${department.id})}">delete</a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

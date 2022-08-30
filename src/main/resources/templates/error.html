@@ -1,0 +1,25 @@
+<!Doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css"  th:href="@{/../styles_forms.css}">
+    <link rel="stylesheet" type="text/css"  th:href="@{/../styles_index.css}">
+</head>
+<html>
+<body>
+<nav>
+    <ul>
+        <li> <a href="http://localhost:8080/departments"> Departments</a> </li>
+        <li> <a href="http://localhost:8080/employees"> Employees</a> </li>
+        <li> <a href="http://localhost:8080/reports"> Reports</a> </li>
+    </ul>
+</nav>
+<br>
+<h2>ERROR</h2>
+<br>
+
+<div>
+    <label th:text= "${message}"> </label>
+</div>
+
+</body>
+</html>

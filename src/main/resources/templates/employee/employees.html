@@ -1,0 +1,58 @@
+
+<!Doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css"  th:href="@{styles_tables.css}">
+    <link rel="stylesheet" type="text/css"  th:href="@{styles_index.css}">
+</head>
+<html>
+<body>
+<nav>
+    <ul>
+        <li> <a href="departments"> Departments</a> </li>
+        <li> <a href="employees"> Employees</a> </li>
+        <li> <a href="reports"> Reports</a> </li>
+    </ul>
+</nav>
+<br>
+<h2>ALL EMPLOYEES</h2>
+<br>
+<div>
+<input type="button" value="Add new employee" onclick="window.location.href = 'addNewEmployee'">
+</div>
+<br>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>sex</th>
+        <th>Birthday</th>
+        <th>Employment date</th>
+        <th>Date of dismissal</th>
+        <th>Department</th>
+        <th>Salary</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+
+    </thead>
+    <tbody>
+    <tr th:each="employee : ${allEmployees}">
+        <td th:text="${employee.name}"></td>
+        <td th:text="${employee.surname}"></td>
+        <td th:text="${employee.sex}"></td>
+        <td th:text="${employee.birthday}"></td>
+        <td th:text="${employee.employmentDate}"></td>
+        <td th:text="${employee.dateOfDismissal}"></td>
+        <td th:text="${employee.department.getName()}"></td>
+        <td th:text="${employee.salary}"></td>
+
+        <td><a th:href="@{/employee/{id}/edit(id=${employee.id})}">edit</a></td>
+        <td><a th:href="@{/deleteEmployee/{id}(id=${employee.id})}">delete</a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

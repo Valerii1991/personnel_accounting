@@ -1,0 +1,33 @@
+
+<!Doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css"  th:href="@{/../styles_forms.css}">
+    <link rel="stylesheet" type="text/css"  th:href="@{/../styles_index.css}">
+</head>
+<html>
+<body>
+<nav>
+    <ul>
+        <li> <a href="http://localhost:8080/departments"> Departments</a> </li>
+        <li> <a href="http://localhost:8080/employees"> Employees</a> </li>
+        <li> <a href="http://localhost:8080/reports"> Reports</a> </li>
+    </ul>
+</nav>
+<br>
+<h2>EDIT DEPARTMENT</h2>
+<br>
+
+<form th:action="@{/updateDepartment}" th:method="post" th:object="${department}">
+    <label for="name">Name</label>
+    <input id="id"  type="hidden" name="id" th:value="${department.id}">
+    <input id="name"  type="text" name="name" th:value="${department.name}">
+    <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"> Name error</div>
+    <br>
+    <br>
+    <div>
+        <input type="submit" value="Edit">
+    </div>
+</form>
+</body>
+</html>

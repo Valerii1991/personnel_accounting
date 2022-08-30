@@ -1,0 +1,80 @@
+
+<!Doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css"  th:href="@{styles_forms.css}">
+    <link rel="stylesheet" type="text/css"  th:href="@{styles_index.css}">
+</head>
+<html>
+<body>
+<nav>
+    <ul>
+        <li> <a href="departments"> Departments</a> </li>
+        <li> <a href="employees"> Employees</a> </li>
+        <li> <a href="reports"> Reports</a> </li>
+    </ul>
+</nav>
+<br>
+<h2>NEW EMPLOYEE</h2>
+<br>
+
+<form action="saveEmployee" method="post" th:object="${employee}">
+    <input id="id"  type="hidden" name="id" th:value="${employee.id}">
+
+    <label for="name">Name</label>
+    <input id="name"  type="text" name="name" th:value="${employee.name}">
+    <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"> Name error</div>
+    <br>
+    <br>
+
+    <label for="surname">Surname</label>
+    <input id="surname"  type="text" name="surname" th:value="${employee.surname}">
+    <div style="color: red" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"> Name error</div>
+    <br>
+    <br>
+
+    <label for="salary">Salary (UAH)</label>
+    <input id="salary"  type="number" step="0.01" min="0" name="salary" th:value="${employee.salary}">
+    <br>
+    <br>
+
+    <label for="salary"> Sex </label>
+    <select th:field="*{keySexType}">
+        <option th:each="key : ${employee.sexTypes.keySet()}"
+                th:value=${key}
+                th:text="${employee.sexTypes.get(key)}">Sex</option>
+    </select>
+    <br>
+    <br>
+
+    <label for="salary"> Department </label>
+    <select th:field="*{keyMapDepartment}">
+        <option th:each="key : ${employee.mapDepartments.keySet()}"
+                th:value=${key}
+                th:text="${employee.mapDepartments.get(key)}" th:selected="${employee.keyMapDepartment}">Department</option>
+    </select>
+    <br>
+    <br>
+
+    <label for="birthday">Birthday</label>
+    <input id="birthday"  type="date" name="birthday" th:value="${employee.birthday}">
+    <br>
+    <br>
+
+    <label for="employmentDate">Employment date</label>
+    <input id="employmentDate"  type="date" name="employmentDate" th:value="${employee.employmentDate}">
+    <div style="color: red" th:if="${#fields.hasErrors('employmentDate')}" th:errors="*{employmentDate}"> Name error</div>
+    <br>
+    <br>
+
+    <label for="dateOfDismissal">date of dismissal</label>
+    <input id="dateOfDismissal"  type="date" name="dateOfDismissal" th:value="${employee.dateOfDismissal}">
+    <br>
+    <br>
+
+    <div>
+        <input type="submit" value="Save">
+    </div>
+</form>
+</body>
+</html>

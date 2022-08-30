@@ -1,0 +1,41 @@
+table {
+    background-color: darkblue;
+    margin: 0 auto;
+    width: 400px;
+}
+
+th {
+    background-color: antiquewhite;
+}
+
+input{
+    margin: 0 auto;
+    width: 400px;
+}
+
+button {
+    margin: 0 auto;
+    display: block;
+}
+
+div {
+    text-align: center;
+    margin: 0 auto;
+    width: 400px;
+    display: block;
+}
+
+td {
+    background-color: white;
+}
+
+h2{
+    background-color: gold;
+    margin: 0 auto;
+    width: 400px;
+    text-align: center;
+}
+
+html{
+    background-color: gray;
+}

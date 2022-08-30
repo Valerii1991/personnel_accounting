@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css"  th:href="@{styles_tables.css}">
+    <link rel="stylesheet" type="text/css"  th:href="@{styles_index.css}">
+</head>
+<body>
+<nav>
+    <ul>
+        <li> <a href="departments"> Departments</a> </li>
+        <li> <a href="employees"> Employees</a> </li>
+        <li> <a href="reports"> Reports</a> </li>
+    </ul>
+</nav>
+<br>
+<h2>SELECTION</h2>
+<br>
+<form action="showResult" method="post" th:object="${reports}">
+
+    <label for="useSelectionForDepartment"></label>
+    <input id="useSelectionForDepartment"  type="checkbox" th:field="*{useSelectionForDepartment}" name="useSelectionForDepartment" th:value="${reports.useSelectionForDepartment}">
+
+<label> Department </label>
+<select th:field="*{keyMapDepartment}">
+    <option th:each="key : ${reports.mapDepartments.keySet()}"
+            th:value=${key}
+            th:text="${reports.mapDepartments.get(key)}">Department</option>
+</select>
+
+    <br>
+    <br>
+
+    <label for="useSelectionForSalary"></label>
+    <input id="useSelectionForSalary"  type="checkbox" th:field="*{useSelectionForSalary}" name="useSelectionForSalary" th:value="${reports.useSelectionForSalary}">
+    <label> Salary </label>
+    <select th:field="*{keyOperatorForSalary}">
+        <option th:each="key : ${reports.mapOperators.keySet()}"
+                th:value=${key}
+                th:text="${reports.mapOperators.get(key)}"></option>
+    </select>
+
+    <input id="salary"  type="number" step="0.01" min="0" th:field="*{salary}" name="salary" th:value="${reports.salary}">
+
+    <br>
+    <br>
+    <label for="useSelectionForEmploymentDate"></label>
+    <input id="useSelectionForEmploymentDate"  type="checkbox" th:field="*{useSelectionForEmploymentDate}" name="useSelectionForEmploymentDate" th:value="${reports.useSelectionForEmploymentDate}">
+    <label> Employment date </label>
+    <select th:field="*{keyOperatorForEmploymentDate}">
+        <option th:each="key : ${reports.mapOperators.keySet()}"
+                th:value=${key}
+                th:text="${reports.mapOperators.get(key)}"></option>
+    </select>
+
+    <input id="EmploymentDate"  type="date"  th:field="*{EmploymentDate}" name="EmploymentDate" th:value="${reports.EmploymentDate}">
+
+    <br>
+    <br>
+    <div>
+    <input type="submit" value="Generate a report">
+    </div>
+
+</form>
+
+
+<br>
+<br>
+</body>
+</html>
